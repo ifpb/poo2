@@ -24,13 +24,13 @@ public class Questao4 {
 		do {
 
 			System.out.println("\nDigite o nome:");
-			String nome = scanner.next();
+			String nome = scanner.nextLine();
 
 			System.out.println("\nDigite a idade:");
-			int idade = scanner.nextInt();
+			int idade = Integer.parseInt(scanner.nextLine());
 
 			System.out.println("\nDigite a altura:");
-			float altura = scanner.nextFloat();
+			float altura = Float.parseFloat(scanner.nextLine());
 
 			Pessoa pessoa = new Pessoa();
 			pessoa.setIdade(idade);
@@ -40,18 +40,39 @@ public class Questao4 {
 			pessoas.add(pessoa);
 
 			System.out.println("\nDeseja cadastrar uma nova pessoa? (s/n)");
-			continuar = scanner.next();
+			continuar = scanner.nextLine();
 
 		} while (!continuar.equals("n"));
 
 		System.out.println("Pessoas cadastradas");
 		
-		pessoas.sort(new PessoaComparator());
-
+		
+		System.out.println("Ordenadas pelo nome: ");
+		pessoas.sort(new PessoaNomeComparator());
+		
 		for (Pessoa pessoa : pessoas) {
 			System.out.println("Nome: " + pessoa.getNome());
 			System.out.println("Idade: " + pessoa.getIdade());
 			System.out.println("Altura: " + pessoa.getAltura());
 		}
+		
+		System.out.println("Ordenadas por idade: ");
+		pessoas.sort(new PessoaIdadeComparator());
+		
+		for (Pessoa pessoa : pessoas) {
+			System.out.println("Nome: " + pessoa.getNome());
+			System.out.println("Idade: " + pessoa.getIdade());
+			System.out.println("Altura: " + pessoa.getAltura());
+		}
+		
+		System.out.println("Ordenadas por altura: ");
+		pessoas.sort(new PessoaAlturaComparator());
+		
+		for (Pessoa pessoa : pessoas) {
+			System.out.println("Nome: " + pessoa.getNome());
+			System.out.println("Idade: " + pessoa.getIdade());
+			System.out.println("Altura: " + pessoa.getAltura());
+		}
+		
 	}
 }

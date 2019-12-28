@@ -21,13 +21,13 @@ public class Questao3 {
 		do {
 
 			System.out.println("\nDigite o nome:");
-			String nome = scanner.next();
+			String nome = scanner.nextLine();
 
 			System.out.println("\nDigite a idade:");
-			int idade = scanner.nextInt();
+			int idade = Integer.parseInt(scanner.nextLine());
 
 			System.out.println("\nDigite a altura:");
-			float altura = scanner.nextFloat();
+			float altura = Float.parseFloat(scanner.nextLine());
 
 			Pessoa pessoa = new Pessoa();
 			pessoa.setIdade(idade);
@@ -37,8 +37,8 @@ public class Questao3 {
 			pessoas.add(pessoa);
 
 			System.out.println("\nDeseja cadastrar uma nova pessoa? (s/n)");
-			continuar = scanner.next();
-
+			continuar = scanner.nextLine();
+			
 		} while (!continuar.equals("n"));
 
 		System.out.println("Pessoas cadastradas");

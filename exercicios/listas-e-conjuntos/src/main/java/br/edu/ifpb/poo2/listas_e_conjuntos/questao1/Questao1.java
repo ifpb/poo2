@@ -12,7 +12,7 @@ public class Questao1 {
 //			System.out.println(vetor[i]);
 //		}
 
-		List<Integer> vetor = new ArrayList<Integer>();
+		List<Integer> vetor = new ArrayList<Integer>();		
 //		vetor.add(2);
 //		vetor.add(5);
 //		vetor.add(3);
@@ -22,9 +22,9 @@ public class Questao1 {
 //		vetor.add(3);
 //		vetor.add(8);
 //		vetor.add(5);
-//		
-		vetor = Arrays.asList(2,5,3,9,2,4,3,8,5);
 		
+		vetor = Arrays.asList(2,5,3,9,2,4,3,8,5);
+
 		for(Integer valor: vetor) {
 			System.out.println(valor);
 		}
