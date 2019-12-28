@@ -15,7 +15,8 @@ public class OcorrenciasPalavras {
 		
 		Map<String, Integer> palavras = new HashMap<String, Integer>();
 		for(String palavra: frase.split(" ")) { 
-			palavras.put(palavra, Optional.ofNullable(palavras.get(palavra)).orElse(0) + 1);	
+			palavras.put(palavra, palavras.getOrDefault(palavra, 0) + 1);	
+//			palavras.put(palavra, Optional.ofNullable(palavras.get(palavra)).orElse(0) + 1);	
 		}
 		
 		for(Map.Entry<String, Integer> linha : palavras.entrySet()) {
