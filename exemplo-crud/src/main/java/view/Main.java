@@ -5,6 +5,12 @@ import java.time.LocalDate;
 import controller.GerenciadorClientes;
 import model.Cliente;
 
+/***
+ * Classe principal para execução da interface gráfica
+ * 
+ * @author diegopessoa
+ *
+ */
 public class Main {
 	
 	public static void main(String[] args) {

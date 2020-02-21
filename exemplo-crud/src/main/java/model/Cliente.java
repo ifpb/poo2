@@ -2,6 +2,11 @@ package model;
 
 import java.time.LocalDate;
 
+/**
+ * Armazena dados de um cliente
+ * 
+ * @author diegopessoa
+ */
 public class Cliente {
 
 	private Long id;

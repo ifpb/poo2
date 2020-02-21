@@ -24,23 +24,28 @@ import model.Cliente;
  */
 public class GerenciadorClientesArquivo {
     
+	/** 
+	 * Carrega lista de clientes do arquivo
+	 */
     private List<Cliente> clientes = new ArrayList<Cliente>();
     
+    
+    /** Lê arquivo que armazena os clientes **/
     public void lerArquivo() throws FileNotFoundException, IOException, ClassNotFoundException {
-        FileInputStream fileInputStream = new FileInputStream("clientes.txt");
-        ObjectInputStream objInputStream = new ObjectInputStream(fileInputStream);
-        this.clientes = (List<Cliente>)objInputStream.readObject();
+        FileInputStream fileInputStream = new FileInputStream("clientes.txt"); // Carrega canal de leitura do arquivo clientes.txt
+        ObjectInputStream objInputStream = new ObjectInputStream(fileInputStream); // Lê arquivo como objeto
+        this.clientes = (List<Cliente>)objInputStream.readObject(); // Carrega o objeto lido no arquivo na lista de clientes
     }
     
     public void escreverArquivo() throws FileNotFoundException, IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream("clientes.txt");
-        ObjectOutputStream objOutputStream = new ObjectOutputStream(fileOutputStream);
-        objOutputStream.writeObject(this.clientes);
+        FileOutputStream fileOutputStream = new FileOutputStream("clientes.txt"); // Carrega canal de saída do arquivo clientes.txt
+        ObjectOutputStream objOutputStream = new ObjectOutputStream(fileOutputStream); // Carrega canal para escrita de objetos
+        objOutputStream.writeObject(this.clientes); // Escreve lista de clientes atualizada no arquivo
     }
     
     public List<Cliente> listarClientes() {
         try {
-            this.lerArquivo();
+            this.lerArquivo(); // Chama a função lerArquivo() para atualizar a lista de clientes
         } catch (IOException ex) {
             Logger.getLogger(GerenciadorClientesArquivo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -52,8 +57,8 @@ public class GerenciadorClientesArquivo {
     public Optional<Cliente> recuperarCliente(String id) {
         Optional<Cliente> clienteSelecionado = Optional.empty();
         try {
-            this.lerArquivo();
-            clienteSelecionado = clientes.stream().filter( (cliente) -> cliente.getId().equals(id) ).findFirst();
+            this.lerArquivo(); // Chama a função lerArquivo() para atualizar a lista de clientes
+            clienteSelecionado = clientes.stream().filter( (cliente) -> cliente.getId().equals(id) ).findFirst(); // Recupera cliente pelo código
         } catch (IOException ex) {
             Logger.getLogger(GerenciadorClientesArquivo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -65,7 +70,7 @@ public class GerenciadorClientesArquivo {
     public void criarCliente(Cliente cliente) {
         clientes.add(cliente);
         try {
-            this.escreverArquivo();
+            this.escreverArquivo(); // Escreve lista atualizada no arquivo
         } catch (IOException ex) {
             Logger.getLogger(GerenciadorClientesArquivo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -77,7 +82,7 @@ public class GerenciadorClientesArquivo {
         } 
         clientes.add(cliente);
         try {
-            this.escreverArquivo();
+            this.escreverArquivo(); // Escreve lista atualizada no arquivo
         } catch (IOException ex) {
             Logger.getLogger(GerenciadorClientesArquivo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -86,7 +91,7 @@ public class GerenciadorClientesArquivo {
     public void removerCliente(Cliente cliente) {
         clientes.remove(cliente);
         try {
-            this.escreverArquivo();
+            this.escreverArquivo(); // Escreve lista atualizada no arquivo
         } catch (IOException ex) {
             Logger.getLogger(GerenciadorClientesArquivo.class.getName()).log(Level.SEVERE, null, ex);
         }
