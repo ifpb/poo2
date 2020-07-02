@@ -37,7 +37,7 @@ public class GerenciadorClientes {
 	 * @param id - código do cliente
 	 * @return cliente
 	 */
-	public Cliente recuperarCliente(Long id) {
+	public Cliente recuperarCliente(String id) {
 		return clientes.get(id);
 	}
 
